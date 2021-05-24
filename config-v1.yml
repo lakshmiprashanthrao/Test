@@ -11,9 +11,9 @@ apis:
     - name: SimpleAPI
       apiVersion: v1
       apiVersionDescription: My first version
-      openApiSpec: C:\Users\Bharathi\SimpleAPI\swagger.json
-      policy: C:\Users\Bharathi\SimpleAPI\api-policy.xml
+      openApiSpec: C:\SimpleAPI\swagger.json
+      policy: C:\SimpleAPI\api-policy.xml
       suffix: conf
 linked : true
 linkedTemplatesBaseUrl : https://myteststorage5555.blob.core.windows.net/mytestblob5555
-outputLocation: C:\Users\Bharathi\SimpleAPI\templates
+outputLocation: C:\SimpleAPI\templates
