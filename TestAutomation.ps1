@@ -63,5 +63,5 @@ foreach ($productName in $productNames) {
 if (Test-Path $oAuthServer)
 {
 	Write-Host "Setting OAuth Server"
-	Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId "$apiId" -AuthorizationServerId "$oAuthServer" -AuthorizationScope ""
+	Set-AzApiManagementApi -Context $context -ApiId "$apiId" -AuthorizationServerId "$oAuthServer" -AuthorizationScope ""
 }
