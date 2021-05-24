@@ -10,6 +10,7 @@ $apiProtocols = @('https')
 $apiServiceUrl = "https://testwebapp5555.azurewebsites.net"
 $subscription = "P1-Real Hands-On Labs"
 $productNames = @("Test Product1", "Test Product 2", "Test Product 3")
+$oAuthServer = "OAuth2Service"
 
 Connect-AzAccount
 
@@ -57,4 +58,10 @@ Write-Host "Adding Product to API"
 foreach ($productName in $productNames) {
 	$productId = $(Get-AzApiManagementProduct -Context $ApiMgmtContext -Title $productTitle).ProductId
 	Add-AzApiManagementApiToProduct -Context $context -ProductId "$productId" -ApiId "$apiId$apiVersion"
+}
+
+if (Test-Path $oAuthServer)
+{
+	Write-Host "Setting OAuth Server"
+	Set-AzApiManagementApi -Context $ApiMgmtContext -ApiId "$apiId" -AuthorizationServerId "$oAuthServer" -AuthorizationScope ""
 }
