@@ -1,0 +1,19 @@
+version: 0.0.1
+apimServiceName: SimpleAPIService
+apiVersionSets:
+    - id: SimpleAPIVersionSet
+      displayName: SimpleAPI
+      description: Simple API
+      versioningScheme: Query
+      versionQueryName: versionQuery
+      versionHeaderName: versionHeader
+apis:
+    - name: SimpleAPI
+      apiVersion: v1
+      apiVersionDescription: My first version
+      openApiSpec: C:\Users\Bharathi\SimpleAPI\swagger.json
+      policy: C:\Users\Bharathi\SimpleAPI\api-policy.xml
+      suffix: conf
+linked : true
+linkedTemplatesBaseUrl : https://myteststorage5555.blob.core.windows.net/mytestblob5555
+outputLocation: C:\Users\Bharathi\SimpleAPI\templates
