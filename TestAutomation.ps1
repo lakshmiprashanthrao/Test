@@ -1,4 +1,4 @@
-$resourceGroupName = "191-e188a1d7-deploy-a-web-application-with-terrafo"
+$resourceGroupName = "TestResourceGroup"
 $apimServiceName = "testresource55555"
 $openapiSpecs ="https://testwebapp5555.azurewebsites.net/swagger/v1/swagger.json"
 $apiGlobalPolicy = "$(System.ArtifactsDirectory)\$(Release.PrimaryArtifactSourceAlias)\drop\$(api-policy.xml)"
