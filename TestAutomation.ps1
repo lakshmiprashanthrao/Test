@@ -1,20 +1,18 @@
-$resourceGroupName = "TestResourceGroup"
-$apimServiceName = "TestApi5555"
+$resourceGroupName = "191-e188a1d7-deploy-a-web-application-with-terrafo"
+$apimServiceName = "testresource55555"
 $openapiSpecs ="https://testwebapp5555.azurewebsites.net/swagger/v1/swagger.json"
-$apiGlobalPolicy = "api-policy.xml" 
+$apiGlobalPolicy = "$(System.ArtifactsDirectory)\$(Release.PrimaryArtifactSourceAlias)\drop\$(api-policy.xml)"
 $apiPath = ""
 $apiId = "simpleapi"
 $apiVersion = ""
 $apiName = "SimpleAPI"
 $apiProtocols = @('https')
 $apiServiceUrl = "https://testwebapp5555.azurewebsites.net"
-$subscription = "Free Trial"
-$productId = "testproduct"
+$subscription = "P1-Real Hands-On Labs"
+$productNames = @("Test Product1", "Test Product 2", "Test Product 3")
 
-#Connect to Azure using Az Module
 Connect-AzAccount
- 
-#Return all subscription
+
 Get-AzSubscription
 Set-AzContext -Subscription "$subscription"
 
@@ -55,6 +53,8 @@ else
     Write-Host "Global Policy NOT FOUND. skipping : $apiGlobalPolicy "
 }
 
-# Add Existing Product to API
-Write-Host "Added Product to API"
-Add-AzApiManagementApiToProduct -Context $context -ProductId "$productId" -ApiId "$apiId$apiVersion"
+Write-Host "Adding Product to API"
+foreach ($productName in $productNames) {
+	$productId = $(Get-AzApiManagementProduct -Context $ApiMgmtContext -Title $productTitle).ProductId
+	Add-AzApiManagementApiToProduct -Context $context -ProductId "$productId" -ApiId "$apiId$apiVersion"
+}
