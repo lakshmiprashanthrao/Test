@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "path": "conf",
+        "value": "{\r\n    \"openapi\": \"3.0.1\",\r\n    \"info\": {\r\n      \"title\": \"SimpleAPI\",\r\n      \"version\": \"v1\"\r\n    },\r\n    \"paths\": {\r\n      \"/api/WeatherForecast\": {\r\n        \"get\": {\r\n          \"tags\": [\r\n            \"WeatherForecast\"\r\n          ],\r\n          \"responses\": {\r\n            \"200\": {\r\n              \"description\": \"Success\",\r\n              \"content\": {\r\n                \"text/plain\": {\r\n                  \"schema\": {\r\n                    \"type\": \"array\",\r\n                    \"items\": {\r\n                      \"$ref\": \"#/components/schemas/WeatherForecast\"\r\n                    }\r\n                  }\r\n                },\r\n                \"application/json\": {\r\n                  \"schema\": {\r\n                    \"type\": \"array\",\r\n                    \"items\": {\r\n                      \"$ref\": \"#/components/schemas/WeatherForecast\"\r\n                    }\r\n                  }\r\n                },\r\n                \"text/json\": {\r\n                  \"schema\": {\r\n                    \"type\": \"array\",\r\n                    \"items\": {\r\n                      \"$ref\": \"#/components/schemas/WeatherForecast\"\r\n                    }\r\n                  }\r\n                }\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"components\": {\r\n      \"schemas\": {\r\n        \"WeatherForecast\": {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"date\": {\r\n              \"type\": \"string\",\r\n              \"format\": \"date-time\"\r\n            },\r\n            \"temperatureC\": {\r\n              \"type\": \"integer\",\r\n              \"format\": \"int32\"\r\n            },\r\n            \"temperatureF\": {\r\n              \"type\": \"integer\",\r\n              \"format\": \"int32\",\r\n              \"readOnly\": true\r\n            },\r\n            \"summary\": {\r\n              \"type\": \"string\",\r\n              \"nullable\": true\r\n            }\r\n          },\r\n          \"additionalProperties\": false\r\n        }\r\n      }\r\n    }\r\n  }",
+        "format": "openapi+json"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/SimpleAPI')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": []
+    }
+  ]
+}

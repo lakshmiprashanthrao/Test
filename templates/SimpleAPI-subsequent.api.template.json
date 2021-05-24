@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "apiVersion": "v1",
+        "isCurrent": false,
+        "apiVersionDescription": "My first version",
+        "subscriptionRequired": false,
+        "displayName": "SimpleAPI",
+        "path": "conf",
+        "protocols": [
+          "https"
+        ]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/SimpleAPI')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-01-01",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "value": "<policies>\r\n  <inbound>\r\n    <!-- statements to be applied to the request go here -->\r\n  </inbound>\r\n  <backend>\r\n    <!-- statements to be applied before the request is forwarded to \r\n         the backend service go here -->\r\n  </backend>\r\n  <outbound>\r\n    <!-- statements to be applied to the response go here -->\r\n  </outbound>\r\n  <on-error>\r\n    <!-- statements to be applied if there is an error condition go here -->\r\n  </on-error>\r\n</policies> ",
+        "format": "rawxml"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/SimpleAPI/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/policies",
+      "apiVersion": "2019-01-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'SimpleAPI')]"
+      ]
+    }
+  ]
+}
