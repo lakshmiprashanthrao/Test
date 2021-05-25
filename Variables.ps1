@@ -1,0 +1,15 @@
+$resourceGroupName = "TestResourceGroup"
+$apimServiceName = "TestApi5555"
+$openapiSpecs ="https://testwebapp5555.azurewebsites.net/swagger/v1/swagger.json"
+$apiGlobalPolicy = "api-policy.xml" 
+$apiPath = ""
+$apiId = "simpleapi"
+$apiVersion = ""
+$apiName = "SimpleAPI"
+$apiProtocols = @('https')
+$apiServiceUrl = "https://testwebapp5555.azurewebsites.net"
+$subscription = "Free Trial"
+$productNames = @("TestProduct", "Test API", "Starter") 
+$oAuthServer = "OAuth2Service"
+$subscriptionHeader = "Ocp-Apim-Subscription-Key"
+$subscriptionRequired = true
